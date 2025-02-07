@@ -1,0 +1,360 @@
+/* Variables Globales */
+:root {
+  --primary-color: #2A6EF0;
+  --secondary-color: #1DC7FF;
+  --accent-color: #FF6B6B;
+  --dark-gray: #2D3436;
+  --light-gray: #F8F9FA;
+  --transition: all 0.3s ease;
+  --background-gradient: linear-gradient(135deg, #103b8a 0%, #2a5298 100%);
+  --card-bg: rgba(255, 255, 255, 0.15);
+  --card-bg-hover: rgba(255, 255, 255, 0.25);
+}
+
+/* Clase para ocultar elementos */
+.hidden {
+  display: none;
+}
+
+/* Reset básico y tipografía */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background-gradient);
+  color: white;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Sección del Clima */
+#weather {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+/* Encabezado del clima */
+.weather-header {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weather-header h1 {
+  font-size: 2.5rem;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+}
+
+/* Botones de cambio de unidades */
+.unit-toggle button {
+  background: var(--primary-color);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  margin: 0 0.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.unit-toggle button.active,
+.unit-toggle button:hover {
+  background: var(--secondary-color);
+}
+
+/* Tarjeta de clima */
+#weather-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+}
+
+/* Información del clima */
+#weather-info {
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.image-header{
+  border-radius: 50%;
+}
+
+#weather-icon {
+  width: 120px;
+  height: 120px;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+}
+
+.weather-details {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.highlight {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+
+/* Información extra (humedad, viento, etc.) */
+.extra-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.extra-info p {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.extra-info p:hover {
+  background: var(--card-bg-hover);
+}
+
+/* Contenedor de búsqueda */
+.search-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+#city-input {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  transition: var(--transition);
+  outline: none;
+}
+
+#city-input:focus {
+  box-shadow: 0 0 10px var(--secondary-color);
+}
+
+#search-btn,
+#location-btn {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#search-btn:hover,
+#location-btn:hover {
+  transform: translateY(-2px);
+  background: var(--secondary-color);
+}
+
+/* Historial */
+
+#search-history button{
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+
+/* Loading Spinner */
+.loading-spinner {
+  display: none;
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  0%   { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Secciones Acerca y Contacto */
+.section-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.about-card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  transition: var(--transition);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  background: var(--card-bg-hover);
+}
+
+/* Chat de Asistencia */
+#chat-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+#chat-widget button {
+  background: var(--primary-color);
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: var(--transition);
+}
+
+#chat-widget button:hover {
+  background: var(--secondary-color);
+}
+
+/* El chat se oculta por defecto */
+#chat-box {
+  display: none;
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 300px;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  flex-direction: column;
+}
+
+/* Cuando se muestre el chat (se añade la clase "active") */
+#chat-box.active {
+  display: flex;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+}
+
+.chat-messages {
+  padding: 1rem;
+  height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+#chat-input{
+  border: 4px solid rgba(0, 0, 0, 0.215);
+  border-radius: 20px;
+  height: 40px;
+}
+
+
+/* Estilos para los mensajes del chat */
+.chat-messages .message {
+  margin: 0.5rem;
+  padding: 0.8rem 1rem;
+  border-radius: 15px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+/* Mensajes del usuario (alineados a la derecha) */
+.chat-messages .user {
+  background: var(--primary-color);
+  align-self: flex-end;
+  text-align: right;
+}
+
+/* Mensajes del bot (alineados a la izquierda) */
+.chat-messages .bot {
+  background: var(--card-bg);
+  align-self: flex-start;
+  text-align: left;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .extra-info {
+    grid-template-columns: 1fr;
+  }
+  
+  #weather-card {
+    width: 95%;
+    padding: 1.5rem;
+  }
+}

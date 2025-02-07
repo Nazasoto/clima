@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aplicación meteorológica con información en tiempo real y pronóstico del tiempo">
+  <title>ClimaPlus | Aplicación del Clima</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🌤️</text></svg>'>
+</head>
+<body>
+  <!-- Sección del Clima -->
+  <section id="weather">
+    <div class="weather-header">
+      <h1>ClimaPlus 🌡️</h1>
+      <div class="unit-toggle">
+        <button id="unit-celsius">°C</button>
+        <button id="unit-fahrenheit">°F</button>
+      </div>
+    </div>
+    
+    <div id="weather-card">
+      <div id="weather-info">
+        <div class="loading-spinner"></div>
+        <img id="weather-icon" src="../assets/header-image.png" alt="Icono del clima" class="image-header">
+        <div class="weather-details">
+          <h2 id="city-name">Busca una ciudad</h2>
+          <p id="temperature" class="highlight">--°C</p>
+          <p id="weather-condition">Condición del tiempo</p>
+          <div class="extra-info">
+            <p><i class="fas fa-tint"></i> <span id="humidity">--%</span></p>
+            <p><i class="fas fa-wind"></i> <span id="wind">--km/h</span></p>
+            <p><i class="fas fa-temperature-low"></i> <span id="feels-like">--°C</span></p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="search-container">
+        <input type="text" id="city-input" placeholder="Ingresa una ciudad">
+        <button id="search-btn"><i class="fas fa-search"></i></button>
+        <button id="location-btn"><i class="fas fa-location-arrow"></i></button>
+      </div>
+      
+    </div>
+    
+    <div class="scroll-down-arrow"></div>
+  </section>
+
+  <!-- Sección Acerca de Nosotros -->
+  <section id="about">
+    <div class="section-content">
+      <h2>Acerca de ClimaPlus</h2>
+      <div class="about-grid">
+        <div class="about-card">
+          <i class="fas fa-satellite"></i>
+          <h3>Tecnología Avanzada</h3>
+          <p>Utilizamos datos de satélites y estaciones meteorológicas para máxima precisión</p>
+        </div>
+        <div class="about-card">
+          <i class="fas fa-clock"></i>
+          <h3>Actualizaciones en Tiempo Real</h3>
+          <p>Datos actualizados cada 10 minutos para brindarte la información más reciente</p>
+        </div>
+        <div class="about-card">
+          <i class="fas fa-globe-americas"></i>
+          <h3>Cobertura Global</h3>
+          <p>Consulta el clima en cualquier ciudad del mundo con nuestro servicio global</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Chat de Asistencia -->
+  <div id="chat-widget">
+    <button id="open-chat"><i class="fas fa-comments"></i></button>
+    <!-- Por defecto el chat estará oculto (sin la clase active) -->
+    <div id="chat-box">
+      <div class="chat-header">
+        <h3>Asistencia 24/7</h3>
+        <button id="close-chat"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="chat-messages"></div>
+      <input id="chat-input" type="text" placeholder="Escribe tu mensaje...">
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 ClimaPlus. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>
